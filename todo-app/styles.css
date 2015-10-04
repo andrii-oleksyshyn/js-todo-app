@@ -1,11 +1,12 @@
 .down-20 {
-	margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .panel-body .glyphicon {
-	padding-right: 10px;
+    padding-right: 10px;
 }
 
 .item-text {
-	padding-right: 30px;
+    padding-right: 30px;
+    line-height: 30px;
 }
