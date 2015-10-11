@@ -6,6 +6,10 @@
     padding-right: 10px;
 }
 
+#error-message {
+    display: none;
+}
+
 .item-text {
     padding-right: 30px;
     line-height: 30px;

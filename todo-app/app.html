@@ -17,13 +17,16 @@
                 </div>
             </div>
             <div class="container">
-                <div class="row down-20">
+                <div class="form-group row down-20">
                     <div class="col-sm-5 col-sm-offset-3 down-20">
                         <input type="text" id="item-input" class="form-control" placeholder="Enter some stuff">
                     </div>
                     <div class="col-sm-2">
-                        <button id="add-item" class="btn btn-success btn-block" onclick="setItem();">Add item!</button>
+                        <button id="add-item" class="btn btn-success btn-block" onclick="Todo.createItem();">Add item!</button>
                     </div>
+                </div>
+                <div class="row" id="error-message">
+                    <div class="col-sm-5 col-sm-offset-4 down-20 alert alert-danger">Please enter at least 1 symbol!</div>
                 </div>
                 <div class="row">
                     <div id="item-group" class="col-sm-7 col-sm-offset-3">
