@@ -7,6 +7,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="todo.js"></script>
+        <script src="app.js" defer></script>
     </head>
     <body>
         <div class="container">
@@ -16,25 +18,8 @@
                     <p>List everything you need to do!</p>
                 </div>
             </div>
-            <div class="container">
-                <div class="form-group row down-20">
-                    <div class="col-sm-5 col-sm-offset-3 down-20">
-                        <input type="text" id="item-input" class="form-control" placeholder="Enter some stuff">
-                    </div>
-                    <div class="col-sm-2">
-                        <button id="add-item" class="btn btn-success btn-block" onclick="Todo.createItem();">Add item!</button>
-                    </div>
-                </div>
-                <div class="row" id="error-message">
-                    <div class="col-sm-5 col-sm-offset-4 down-20 alert alert-danger">Please enter at least 1 symbol!</div>
-                </div>
-                <div class="row">
-                    <div id="item-group" class="col-sm-7 col-sm-offset-3">
-                        <!-- All items appear here -->
-                    </div>
-                </div>
-            </div>
+            <div class="container" id="root"></div>
+            <div class="container" id="root1"></div>
         </div>
-        <script src="todo.js"></script>
     </body>
 </html>
