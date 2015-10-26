@@ -2,9 +2,14 @@
 var Todo = (function() {
     var form, input, add, error, root;
 
+    // CSS variables
+    var errorClass = "has-error";
+    var btnDanger = ".btn-danger";
+    var iGroup = ".item-group";
+
     /* Creates HTML for the component */
     function createHTML(rootEl) {
-        root = $($(rootEl)[0])
+        root = $(rootEl)
             .html(   '<div class="form-group row down-20">' + 
                             '<div class="col-sm-5 col-sm-offset-3 down-20">' + 
                                 '<input type="text" id="item-input" class="form-control input" placeholder="Enter some stuff">' + 
@@ -28,15 +33,15 @@ var Todo = (function() {
 
     /* Initialize variables for current root element */
     function initVars() {
-        form = $(root).find(".form-group")[0];
-        input = $(root).find(".input")[0];
-        add = $(root).find(".add")[0];
-        error = $(root).find(".error")[0];
+        form = $(root.find(".form-group")[0]);
+        input = $(root.find(".input")[0]);
+        add = $(root.find(".add")[0]);
+        error = $(root.find(".error")[0]);
     }
 
     /* Attach event listener for "Add Item" button */
     function attachAddButtonListener() {
-        $(add).on("click", addItem(form, input, error, root));
+        add.on("click", addItem(form, input, error, root));
     }
 
     /* Main function, adds new created items to the todo list */
@@ -48,26 +53,26 @@ var Todo = (function() {
             }
 
             var itemDiv = createItem(input, root);
-            var itemGroup = $($(root).find(".item-group")[0])
+            var itemGroup = $(root.find(iGroup)[0])
                 .prepend(itemDiv);
             
             /* Resetting input after item is created */
-            $(input).val("");
+            input.val("");
         };
     }
 
     /* Validates entered value and shows/hides error message */
     function validateValue(form, input, error) {
-        if (!input.value.length) {
-            $(form).addClass("has-error");
-            $(error).fadeIn(600);
+        if (!input.val()) {
+            form.addClass(errorClass);
+            error.fadeIn(600);
 
             return false;
         }
 
-        if ($(form).hasClass("has-error")) {
-            $(form).removeClass("has-error");
-            $(error).fadeOut(400);
+        if (form.hasClass(errorClass)) {
+            form.removeClass(errorClass);
+            error.fadeOut(400);
         }
 
         return true;
@@ -75,7 +80,7 @@ var Todo = (function() {
 
     function createItem(input, root) {
         var removeBtn;
-        var itemValue = $(input).val();
+        var itemValue = input.val();
 
         /* Div wrapper that is being appended to the list */
         var itemDiv = $($("<div>")[0])
@@ -87,7 +92,7 @@ var Todo = (function() {
                     '</div>');
         /* Added setTimeout function because .html method works quite slowly :\ */
         setTimeout(function() {
-            removeBtn = $(root).find(".btn-danger")[0];
+            removeBtn = root.find(btnDanger)[0];
             $(removeBtn).on("click", removeItem(removeBtn));
         }, 10);
         
@@ -97,8 +102,8 @@ var Todo = (function() {
     /* Removes item from the list */
     function removeItem(self) {
         return function() {
-            var parent = self.parentNode.parentNode;
-            parent.parentNode.removeChild(parent);
+            var parent = $(self).parents()[1];
+            parent.remove(parent);
         };
     }
 
